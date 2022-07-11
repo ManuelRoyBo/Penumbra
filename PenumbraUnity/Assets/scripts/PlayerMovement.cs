@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+
+   public Animator animator;
+   private float scale;
    Rigidbody2D rb;
    float speed = 7;
    float jumpVelocity = 8;
@@ -11,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+      scale = gameObject.transform.localScale.x;
        rb = GetComponent<Rigidbody2D>();
     }
 
@@ -21,7 +25,14 @@ public class PlayerMovement : MonoBehaviour
       float dirX = Input.GetAxisRaw("Horizontal");//direction X axis
 
       rb.velocity = new Vector2(dirX*speed, rb.velocity.y);
+      animator.SetFloat("Speed", Mathf.Abs(dirX));
       
+      if (dirX > 0){
+         transform.localScale = new Vector2(scale, transform.localScale.y);
+      }
+      else if (dirX < 0){
+         transform.localScale = new Vector2(-scale, transform.localScale.y);
+      }
 
       if (Input.GetButtonDown("Jump"))
       {
