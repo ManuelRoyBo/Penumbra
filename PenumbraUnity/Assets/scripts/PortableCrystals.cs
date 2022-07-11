@@ -28,7 +28,7 @@ public class PortableCrystals : MonoBehaviour
                 case 0:
                     break;
                 case 1:
-                    Instantiate(waterCrystalPrefab,transform.position + new Vector3(1,0,0), Quaternion.identity);
+                    Instantiate(waterCrystalPrefab,transform.position + new Vector3(0,0.1f,0), Quaternion.identity);
                     hasCrystal = 0;
                     break;
         }
