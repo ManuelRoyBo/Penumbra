@@ -24,7 +24,6 @@ public class crystalPickup : MonoBehaviour
   {
   yield return new WaitForSeconds(0.1f);
   readyToBePickedUp = ! ((gameObject.GetComponent<CircleCollider2D>().IsTouching(player.GetComponent<Collider2D>())));
-  Debug.Log(readyToBePickedUp);
   }
   private void OnTriggerExit2D(Collider2D collision){
     readyToBePickedUp = true;

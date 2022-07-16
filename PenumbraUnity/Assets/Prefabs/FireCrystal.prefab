@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2036865562345696691}
   - component: {fileID: 2036865562345696688}
   m_Layer: 0
-  m_Name: WaterCrystal
+  m_Name: FireCrystal
   m_TagString: Crystal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: -1274498883
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: -427354478, guid: 543ecc55d11105b4386a5c490bdc0bd6, type: 3}
+  m_Sprite: {fileID: 674985867, guid: 543ecc55d11105b4386a5c490bdc0bd6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -170,5 +170,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca563757a1e40174091888cc431ad550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crystalType: 1
+  crystalType: 2
   readyToBePickedUp: 0
