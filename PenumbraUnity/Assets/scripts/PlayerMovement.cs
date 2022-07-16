@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!GameManager.Instance.CanMove()) { rb.velocity = new Vector2(0, rb.velocity.y); return; }
 
       float dirX = Input.GetAxisRaw("Horizontal");//direction X axis
 
