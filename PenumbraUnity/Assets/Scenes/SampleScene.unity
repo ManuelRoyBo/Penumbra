@@ -361,6 +361,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1178248427}
   - component: {fileID: 1178248426}
+  - component: {fileID: 1178248428}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -396,6 +397,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1178248428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178248425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa04dbb9c63f2e4ab60f1b1e154fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InteractText: {fileID: 0}
+  DialogueObject: {fileID: 0}
+  dialogueTextArea: {fileID: 0}
 --- !u!1001 &1290974445
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -738,7 +754,6 @@ MonoBehaviour:
   fireCrystalPrefab: {fileID: 2036865562345696651, guid: 74638dd0f2d51ae429d1b730573ada45, type: 3}
   earthCrystalPrefab: {fileID: 2036865562345696651, guid: d0849b4c393c71b4ea3e78fbd880f2ea, type: 3}
   darkCrystalPrefab: {fileID: 2036865562345696651, guid: a677cdf7499939748a45bd9250418f52, type: 3}
-  spriteRenderer: {fileID: 0}
 --- !u!1001 &1763777351
 PrefabInstance:
   m_ObjectHideFlags: 0
