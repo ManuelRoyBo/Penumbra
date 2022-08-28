@@ -9,6 +9,12 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get { return instance; } }
     private static GameManager instance;
 
+    //Reference variables
+    public Transform Player;
+    [HideInInspector] public PlayerMovement PMovement;
+    [HideInInspector] public PlayerAbilities PAbility;
+
+    //UI variables
     public GameObject InteractText;
 
     //Dialogue variables
@@ -22,6 +28,12 @@ public class GameManager : MonoBehaviour
         //Singleton checks
         if (GameManager.Instance && GameManager.Instance!=this) { Destroy(this); }
         instance = this;
+    }
+
+    private void Start()
+    {
+        PMovement = Player.GetComponent<PlayerMovement>();
+        PAbility = Player.GetComponent<PlayerAbilities>();
     }
 
     private void Update()
@@ -38,8 +50,9 @@ public class GameManager : MonoBehaviour
         if (!InteractText) { return; }
         InteractText.SetActive(toSet);
     }
-    
+
     //Dialogue Functions
+    #region Dialogue
 
     public void PlayDialogue(Dialogue dialogue)
     {
@@ -67,4 +80,6 @@ public class GameManager : MonoBehaviour
         inDialogue = false;
         DialogueObject.SetActive(false);
     }
+
+    #endregion
 }
