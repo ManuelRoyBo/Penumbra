@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: 743561f915b0b61468f7f6769c7a8936
+guid: f3c4f1112f5e33848bdcc1b4273ada40
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - waterCrystalPrefab: {fileID: 2036865562345696651, guid: 7bdec93d7e582a640bbf18569863bc3d, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
