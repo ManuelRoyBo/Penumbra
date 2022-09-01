@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class CollisionEffects2D : MonoBehaviour
 {
-    void OnCollisionEnter2D(Collision2D collisionInfo)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collisionInfo.collider.name == "Player")
+        if (collision.CompareTag("Player"))
         {
             Debug.Log("Damage taken");
+            //Restart scene here
         }
     }
 
