@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class CollisionEffects2D : MonoBehaviour
@@ -9,8 +10,7 @@ public class CollisionEffects2D : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("Damage taken");
-            //Restart scene here
+            SceneManager.LoadScene(1);
         }
     }
 
