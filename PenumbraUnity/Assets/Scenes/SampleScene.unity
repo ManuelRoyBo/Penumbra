@@ -870,17 +870,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: BurningFireCrystal
       objectReference: {fileID: 0}
+    - target: {fileID: 2036865562345696654, guid: e6de32f18aa2c0e45b4bbfb74a04faa2, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2036865562345696654, guid: e6de32f18aa2c0e45b4bbfb74a04faa2, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2036865562345696655, guid: e6de32f18aa2c0e45b4bbfb74a04faa2, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2036865562345696655, guid: e6de32f18aa2c0e45b4bbfb74a04faa2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.13
+      value: -5.49
       objectReference: {fileID: 0}
     - target: {fileID: 2036865562345696655, guid: e6de32f18aa2c0e45b4bbfb74a04faa2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.01
+      value: 2.88
       objectReference: {fileID: 0}
     - target: {fileID: 2036865562345696655, guid: e6de32f18aa2c0e45b4bbfb74a04faa2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -913,6 +921,10 @@ PrefabInstance:
     - target: {fileID: 2036865562345696655, guid: e6de32f18aa2c0e45b4bbfb74a04faa2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2705666212678693544, guid: e6de32f18aa2c0e45b4bbfb74a04faa2, type: 3}
+      propertyPath: m_Intensity
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2705666212678693544, guid: e6de32f18aa2c0e45b4bbfb74a04faa2, type: 3}
       propertyPath: m_FalloffIntensity
