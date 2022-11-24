@@ -5,6 +5,7 @@ using UnityEngine;
 public class FireCrystalThrow : MonoBehaviour
 {
     public UnityEngine.Rendering.Universal.Light2D Light;
+    public Animator animator;
 
     public float MIN_INTENSITY = 0.0f; //Apparently, ou cannot make constants appear in the inspector. If you have an alternative, feel free to modify it.
     public float DEFAULT_INTENSITY = 1.0f;
@@ -26,7 +27,7 @@ public class FireCrystalThrow : MonoBehaviour
 
         Light.intensity = MIN_INTENSITY;
         StartCoroutine(Ignite(TIME_BEFORE_IGNITION));  //Ignition
-        StartCoroutine(Burn(BURN_DURATION + IGNITE_DURATION + TIME_BEFORE_IGNITION));  //burn
+        StartCoroutine(Burn(IGNITE_DURATION + TIME_BEFORE_IGNITION));  //burn
         StartCoroutine(Fade(FADE_TIME+BURN_DURATION+ IGNITE_DURATION + TIME_BEFORE_IGNITION));  //Fade
     }
 
@@ -37,6 +38,8 @@ public class FireCrystalThrow : MonoBehaviour
         Debug.Log(Mathf.PingPong(IGNITE_DURATION, DEFAULT_INTENSITY - MIN_INTENSITY));
         Light.intensity = DEFAULT_INTENSITY;
 
+        animator.SetInteger("crystalState", 1);
+
         for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / IGNITE_DURATION)
         {
             Light.intensity = (Mathf.Lerp(MIN_INTENSITY, DEFAULT_INTENSITY, t));
@@ -46,11 +49,13 @@ public class FireCrystalThrow : MonoBehaviour
     IEnumerator Burn(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
+        animator.SetInteger("crystalState", 2);
         //Burn
     }
     IEnumerator Fade(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
+        animator.SetInteger("crystalState", 3);
         //Fade
         for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / IGNITE_DURATION)
         {

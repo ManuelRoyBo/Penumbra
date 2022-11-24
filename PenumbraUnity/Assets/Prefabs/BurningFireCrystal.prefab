@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2036865562345696690}
   - component: {fileID: 2036865562345696691}
   - component: {fileID: 2705666212678693544}
+  - component: {fileID: -7923132897288960194}
   m_Layer: 0
   m_Name: BurningFireCrystal
   m_TagString: Crystal
@@ -78,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: -1274498883
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 674985867, guid: 543ecc55d11105b4386a5c490bdc0bd6, type: 3}
+  m_Sprite: {fileID: -1702022511, guid: 8c7a948247f52be4badfedd20f411501, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -123,6 +124,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Light: {fileID: 2705666212678693544}
+  animator: {fileID: -7923132897288960194}
+  MIN_INTENSITY: 0
+  DEFAULT_INTENSITY: 1
+  TIME_BEFORE_IGNITION: 2
+  IGNITE_DURATION: 1
+  BURN_DURATION: 5
+  FADE_TIME: 1
 --- !u!60 &2036865562345696690
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -140,7 +148,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.59375, y: 1}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 0.59375, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -251,3 +259,23 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!95 &-7923132897288960194
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036865562345696651}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f0dacdef584bd0a478521edc157be231, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
