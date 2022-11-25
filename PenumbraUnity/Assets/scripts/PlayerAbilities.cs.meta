@@ -3,7 +3,11 @@ guid: 3be2797bedc66a444847f17beb0a0fba
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - holdPosition: {instanceID: 0}
+  - holding: {instanceID: 0}
+  - consumed: {instanceID: 0}
+  - fireCrystalThrow: {fileID: 2036865562345696651, guid: e6de32f18aa2c0e45b4bbfb74a04faa2, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

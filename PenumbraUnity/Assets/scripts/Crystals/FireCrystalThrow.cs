@@ -12,7 +12,7 @@ public class FireCrystalThrow : MonoBehaviour
     public float TIME_BEFORE_IGNITION = 2.0f;
     public float IGNITE_DURATION = 1.0f;
     public float BURN_DURATION = 5.0f;
-    public float FADE_TIME = 1.0f;
+    public float FADE_TIME = 2.0f;
 
     // Start is called before the first frame update
     private void Start()
@@ -28,14 +28,15 @@ public class FireCrystalThrow : MonoBehaviour
         Light.intensity = MIN_INTENSITY;
         StartCoroutine(Ignite(TIME_BEFORE_IGNITION));  //Ignition
         StartCoroutine(Burn(IGNITE_DURATION + TIME_BEFORE_IGNITION));  //burn
-        StartCoroutine(Fade(FADE_TIME+BURN_DURATION+ IGNITE_DURATION + TIME_BEFORE_IGNITION));  //Fade
+        StartCoroutine(Fade(BURN_DURATION+ IGNITE_DURATION + TIME_BEFORE_IGNITION));  //Fade
+
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
     IEnumerator Ignite(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
         //Ignition
-        Debug.Log(Mathf.PingPong(IGNITE_DURATION, DEFAULT_INTENSITY - MIN_INTENSITY));
         Light.intensity = DEFAULT_INTENSITY;
 
         animator.SetInteger("crystalState", 1);
@@ -57,13 +58,18 @@ public class FireCrystalThrow : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         animator.SetInteger("crystalState", 3);
         //Fade
-        for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / IGNITE_DURATION)
+        SpriteRenderer rend = gameObject.transform.GetComponent<SpriteRenderer>();
+        Color matColor = rend.color;
+        float alphaValue = rend.color.a;
+        for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / FADE_TIME)
         {
-            Light.intensity = (Mathf.Lerp(DEFAULT_INTENSITY,0, t));
+            Light.intensity = (Mathf.Lerp(DEFAULT_INTENSITY,0, t));//Light
+            rend.color = new Color(matColor.r, matColor.g, matColor.b, Mathf.Lerp(alphaValue, 0, t));//Fade colour (so that it becomes invisible)
             yield return null;
         }
 
         //destroy
+        Destroy(gameObject);
     }
 
 
