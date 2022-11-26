@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: 543ecc55d11105b4386a5c490bdc0bd6
+guid: 8c7a948247f52be4badfedd20f411501
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 160
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -63,6 +63,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -104,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: crystals_0
+      name: Fire_Crystal_Burning_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 4
-        width: 19
-        height: 32
+        y: 0
+        width: 320
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,20 +119,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 055040a3e4e12d94f9a8ae7be83c6de2
-      internalID: 674985867
+      spriteID: 5fe722e9c94f635418608b4c97ce7169
+      internalID: -1702022511
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: crystals_1
+      name: Fire_Crystal_Burning_1
       rect:
         serializedVersion: 2
-        x: 20
-        y: 4
-        width: 19
-        height: 32
+        x: 320
+        y: 0
+        width: 320
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,20 +140,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 53b91d44e83e39347aadea22f9932bb8
-      internalID: -194382821
+      spriteID: f939bd689cd194c49b2d9d2cd830558d
+      internalID: 1318261794
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: crystals_2
+      name: Fire_Crystal_Burning_2
       rect:
         serializedVersion: 2
-        x: 40
-        y: 4
-        width: 19
-        height: 32
+        x: 640
+        y: 0
+        width: 320
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,20 +161,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 641034a34751fd748bb5bd71015f3238
-      internalID: -427354478
+      spriteID: 6bc3ecc8c2963dd48995a656c9caeb53
+      internalID: 190244694
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: crystals_3
+      name: Fire_Crystal_Burning_3
       rect:
         serializedVersion: 2
-        x: 60
-        y: 4
-        width: 19
-        height: 32
+        x: 960
+        y: 0
+        width: 320
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,8 +182,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e3dd1632b4d91204282748d06df15f02
-      internalID: -1738627751
+      spriteID: a6b06f44988009c458a459c59493bda0
+      internalID: 270577323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire_Crystal_Burning_4
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7616ba61f94640e40bdc69bbf2ff4cd8
+      internalID: -665232837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire_Crystal_Burning_5
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 0
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33d2f3cf69063a64082f50df6b2eff5d
+      internalID: -357685729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire_Crystal_Burning_6
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 0
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0b2e2a45bd562c46aaf5f1eab810780
+      internalID: 1546879031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire_Crystal_Burning_7
+      rect:
+        serializedVersion: 2
+        x: 2240
+        y: 0
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d757837f331ab674a9b4a6e731c9585a
+      internalID: 54018059
       vertices: []
       indices: 
       edges: []
@@ -198,10 +283,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      crystals_0: 674985867
-      crystals_1: -194382821
-      crystals_2: -427354478
-      crystals_3: -1738627751
+      Fire_Crystal_Burning_7: 54018059
+      Fire_Crystal_Burning_0: -1702022511
+      Fire_Crystal_Burning_2: 190244694
+      Fire_Crystal_Burning_3: 270577323
+      Fire_Crystal_Burning_6: 1546879031
+      Fire_Crystal_Burning_1: 1318261794
+      Fire_Crystal_Burning_4: -665232837
+      Fire_Crystal_Burning_5: -357685729
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

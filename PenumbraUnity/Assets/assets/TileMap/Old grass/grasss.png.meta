@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: 8c7a948247f52be4badfedd20f411501
+guid: e9f177edf59bd98498c2d7c5f34060cc
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 160
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -63,6 +63,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -104,169 +105,190 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fire_Crystal_Burning_0
+      name: grasss_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 320
-        height: 320
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1
+        y: 131
+        width: 64
+        height: 57
+      alignment: 9
+      pivot: {x: 0.5, y: 0.622807}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5fe722e9c94f635418608b4c97ce7169
-      internalID: -1702022511
+      spriteID: eef2c5700166cf94abeebfa5d52bd0de
+      internalID: -1351950023
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire_Crystal_Burning_1
+      name: grasss_1
       rect:
         serializedVersion: 2
-        x: 320
-        y: 0
-        width: 320
-        height: 320
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 66
+        y: 131
+        width: 64
+        height: 56
+      alignment: 9
+      pivot: {x: 0.5, y: 0.6339286}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f939bd689cd194c49b2d9d2cd830558d
-      internalID: 1318261794
+      spriteID: 45799cb1a6a4a014785687a05f3f5265
+      internalID: -1567650584
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire_Crystal_Burning_2
+      name: grasss_2
       rect:
         serializedVersion: 2
-        x: 640
-        y: 0
-        width: 320
-        height: 320
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 131
+        y: 131
+        width: 64
+        height: 56
+      alignment: 9
+      pivot: {x: 0.5, y: 0.6339286}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6bc3ecc8c2963dd48995a656c9caeb53
-      internalID: 190244694
+      spriteID: 6d45ab66a61125548bca08248032e4bd
+      internalID: 454970852
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire_Crystal_Burning_3
+      name: grasss_3
       rect:
         serializedVersion: 2
-        x: 960
-        y: 0
-        width: 320
-        height: 320
+        x: 1
+        y: 66
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6b06f44988009c458a459c59493bda0
-      internalID: 270577323
+      spriteID: ce1d9f9d015d1cf4885e00c3a5f18b73
+      internalID: 1360595902
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire_Crystal_Burning_4
+      name: grasss_4
       rect:
         serializedVersion: 2
-        x: 1280
-        y: 0
-        width: 320
-        height: 320
+        x: 66
+        y: 66
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7616ba61f94640e40bdc69bbf2ff4cd8
-      internalID: -665232837
+      spriteID: abefad6528b25a64488a6cd928d90dab
+      internalID: 2126362022
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire_Crystal_Burning_5
+      name: grasss_5
       rect:
         serializedVersion: 2
-        x: 1600
-        y: 0
-        width: 320
-        height: 320
+        x: 131
+        y: 66
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 33d2f3cf69063a64082f50df6b2eff5d
-      internalID: -357685729
+      spriteID: b11c12e805b58ba48b4772991d4c8002
+      internalID: -480531346
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire_Crystal_Burning_6
+      name: grasss_6
       rect:
         serializedVersion: 2
-        x: 1920
-        y: 0
-        width: 320
-        height: 320
+        x: 1
+        y: 1
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e0b2e2a45bd562c46aaf5f1eab810780
-      internalID: 1546879031
+      spriteID: dd8c5bf00d8fd9d4195f2dab4c1ad2b5
+      internalID: -1561850960
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire_Crystal_Burning_7
+      name: grasss_7
       rect:
         serializedVersion: 2
-        x: 2240
-        y: 0
-        width: 320
-        height: 320
+        x: 66
+        y: 1
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d757837f331ab674a9b4a6e731c9585a
-      internalID: 54018059
+      spriteID: e423dc212de4b55449ab150a99fec564
+      internalID: -1953392679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grasss_8
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 1
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8a45206458103b4e9101f9c6473f50a
+      internalID: -1408411189
       vertices: []
       indices: 
       edges: []
@@ -282,14 +304,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Fire_Crystal_Burning_7: 54018059
-      Fire_Crystal_Burning_0: -1702022511
-      Fire_Crystal_Burning_2: 190244694
-      Fire_Crystal_Burning_3: 270577323
-      Fire_Crystal_Burning_6: 1546879031
-      Fire_Crystal_Burning_1: 1318261794
-      Fire_Crystal_Burning_4: -665232837
-      Fire_Crystal_Burning_5: -357685729
+      grasss_7: -1953392679
+      grasss_6: -1561850960
+      grasss_5: -480531346
+      grasss_0: -1351950023
+      grasss_2: 454970852
+      grasss_3: 1360595902
+      grasss_8: -1408411189
+      grasss_4: 2126362022
+      grasss_1: -1567650584
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

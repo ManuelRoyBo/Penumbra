@@ -126,10 +126,10 @@ MonoBehaviour:
   Light: {fileID: 2705666212678693544}
   animator: {fileID: -7923132897288960194}
   MIN_INTENSITY: 0
-  DEFAULT_INTENSITY: 1
+  DEFAULT_INTENSITY: 0.7
   TIME_BEFORE_IGNITION: 2
   IGNITE_DURATION: 1
-  BURN_DURATION: 5
+  BURN_DURATION: 10
   FADE_TIME: 2
 --- !u!60 &2036865562345696690
 PolygonCollider2D:
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 0.8544419, b: 0.84339625, a: 1}
+  m_Color: {r: 1, g: 0.76072234, b: 0.66415095, a: 1}
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
