@@ -18,8 +18,8 @@ GameObject:
   - component: {fileID: -7923132897288960194}
   m_Layer: 0
   m_Name: BurningFireCrystal
-  m_TagString: Crystal
-  m_Icon: {fileID: 0}
+  m_TagString: ThrownCrystal
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1

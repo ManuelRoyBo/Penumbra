@@ -560,6 +560,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2036865562345696651, guid: 74638dd0f2d51ae429d1b730573ada45, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 2036865562345696651, guid: 74638dd0f2d51ae429d1b730573ada45, type: 3}
       propertyPath: m_Name
       value: FireCrystal
       objectReference: {fileID: 0}
@@ -2409,12 +2413,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3be2797bedc66a444847f17beb0a0fba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CRYSTAL_THROW_FORCE: 10
   holdPosition: {fileID: 1703215425}
   holding: {fileID: 0}
   consumed: {fileID: 0}
   fireCrystalPrefab: {fileID: 2036865562345696651, guid: 74638dd0f2d51ae429d1b730573ada45, type: 3}
-  fireCrystalThrow: {fileID: 2036865562345696651, guid: e6de32f18aa2c0e45b4bbfb74a04faa2, type: 3}
-  CRYSTAL_THROW_FORCE: 10
+  waterCrystalPrefab: {fileID: 0}
+  earthCrystalPrefab: {fileID: 0}
+  darkCrystalPrefab: {fileID: 0}
+  fireCrystalThrowPrefab: {fileID: 2036865562345696651, guid: e6de32f18aa2c0e45b4bbfb74a04faa2, type: 3}
+  waterCrystalThrowPrefab: {fileID: 0}
+  earthCrystalThrowPrefab: {fileID: 0}
+  darkCrystalThrowPrefab: {fileID: 0}
+  fireCrystalConsumePrefab: {fileID: 0}
+  waterCrystalConsumePrefab: {fileID: 0}
+  earthCrystalConsumePrefab: {fileID: 0}
+  darkCrystalConsumePrefab: {fileID: 0}
 --- !u!1001 &1948602997
 PrefabInstance:
   m_ObjectHideFlags: 0

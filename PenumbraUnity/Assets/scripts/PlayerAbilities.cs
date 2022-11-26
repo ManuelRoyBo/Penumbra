@@ -5,18 +5,35 @@ using System;
 
 public class PlayerAbilities : MonoBehaviour
 {
+    public float CRYSTAL_THROW_FORCE = 10f;
+
     public Transform holdPosition;
     public Crystal holding, consumed;
 
+    /*
+     * Dear Experienced programmers reading this. 
+     * I am sorry. I have difficulty with object oriented programming
+     * Your eyes may bleed. I am sorry.
+     * - kingpin
+     */
+
+    //Default crystals
     public GameObject fireCrystalPrefab;
+    public GameObject waterCrystalPrefab;
+    public GameObject earthCrystalPrefab;
+    public GameObject darkCrystalPrefab;
+    
+    //Throw prefab
+    public GameObject fireCrystalThrowPrefab;
+    public GameObject waterCrystalThrowPrefab;
+    public GameObject earthCrystalThrowPrefab;
+    public GameObject darkCrystalThrowPrefab;
 
-    public GameObject fireCrystalThrow;
-    public float CRYSTAL_THROW_FORCE = 10f;
-
-    void Start()
-    {
-        
-    }
+    //Consume Prefab (mostly accessing the script)
+    public GameObject fireCrystalConsumePrefab;
+    public GameObject waterCrystalConsumePrefab;
+    public GameObject earthCrystalConsumePrefab;
+    public GameObject darkCrystalConsumePrefab;
 
     // Update is called once per frame
     void Update()
@@ -41,16 +58,29 @@ public class PlayerAbilities : MonoBehaviour
 
         if (holding.name.Contains(fireCrystalPrefab.name))
         {
-            GameObject obj =  (GameObject)Instantiate(fireCrystalThrow, gameObject.transform.position, new Quaternion(0,0,0,0));
-            obj.GetComponent<Rigidbody2D>().velocity = PointTowardsMouse() * CRYSTAL_THROW_FORCE;
+            ThrowInstantiate(fireCrystalThrowPrefab);
+        }
+        else
+        {
+            Debug.Log("ERROR: the crystal throw behaviour either wasn't programmed yet or the name of this crystal object is wrong." +
+                " (Note that the crystal gameObject must include it's prefab's name in it.  )" +
+                "In either cases, the crystal auto-destructs itself and doesn't instanciante it's thrown version.");
         }
 
         holding.GetComponent<Crystal>().DestroySelf(); //I wasn't able to destroy the crystal from this script. so Instead, the crystal destroy itself and I call its function.
         holding = null;
-        
-        
     }
 
+    void ThrowInstantiate(GameObject objectToInstantiate)
+    {
+        GameObject obj = (GameObject)Instantiate(objectToInstantiate, gameObject.transform.position, new Quaternion(0, 0, 0, 0));
+        obj.GetComponent<Rigidbody2D>().velocity = PointTowardsMouse() * CRYSTAL_THROW_FORCE;
+    }
+
+    /// <summary>
+    /// Returns a vector from the player pointing towards the mouse.
+    /// </summary>
+    /// <returns></returns>
     Vector3 PointTowardsMouse()
     {
         Vector2 mousePosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);

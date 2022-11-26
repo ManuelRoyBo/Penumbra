@@ -7,7 +7,18 @@ MonoImporter:
   - holdPosition: {instanceID: 0}
   - holding: {instanceID: 0}
   - consumed: {instanceID: 0}
-  - fireCrystalThrow: {fileID: 2036865562345696651, guid: e6de32f18aa2c0e45b4bbfb74a04faa2, type: 3}
+  - fireCrystalPrefab: {fileID: 2036865562345696651, guid: 74638dd0f2d51ae429d1b730573ada45, type: 3}
+  - waterCrystalPrefab: {instanceID: 0}
+  - earthCrystalPrefab: {instanceID: 0}
+  - darkCrystalPrefab: {instanceID: 0}
+  - fireCrystalThrowPrefab: {fileID: 2036865562345696651, guid: e6de32f18aa2c0e45b4bbfb74a04faa2, type: 3}
+  - waterCrystalThrowPrefab: {instanceID: 0}
+  - earthCrystalThrowPrefab: {instanceID: 0}
+  - darkCrystalThrowPrefab: {instanceID: 0}
+  - fireCrystalConsumePrefab: {instanceID: 0}
+  - waterCrystalConsumePrefab: {instanceID: 0}
+  - earthCrystalConsumePrefab: {instanceID: 0}
+  - darkCrystalConsumePrefab: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
