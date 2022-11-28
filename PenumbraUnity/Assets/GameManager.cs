@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
 
     //Reference variables
     public Transform Player;
+    public GameObject PlayerObj;
     [HideInInspector] public PlayerMovement PMovement;
     [HideInInspector] public PlayerAbilities PAbility;
 
@@ -40,7 +42,6 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Interact") && inDialogue) { ContinueDialogue(); }
     }
-
     public bool CanMove()
     {
         return !inDialogue;
@@ -82,4 +83,21 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
+
+    /// <summary>
+    /// Returns a vector from the obj pointing towards the mouse
+    /// </summary>
+    /// <param name="obj"></param>
+    /// <returns></returns>
+    public Vector3 PointTowardsMouse(GameObject obj)
+    {
+        Vector2 mousePosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
+        Vector2 playerPosition = new Vector2(obj.transform.position.x, obj.transform.position.y);
+
+        Vector2 difference = mousePosition - playerPosition;
+        double angleInRadian = Math.Atan2(difference.y, difference.x);
+        Vector3 points = new Vector3((float)Math.Cos(angleInRadian), (float)Math.Sin(angleInRadian), 0);
+
+        return points;
+    }
 }

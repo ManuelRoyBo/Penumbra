@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
+    public bool lockInput = false;
    public Animator animator;
    private float scale;
    Rigidbody2D rb;
@@ -23,23 +23,32 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!GameManager.Instance.CanMove()) { rb.velocity = new Vector2(0, rb.velocity.y); return; }
 
-      float dirX = Input.GetAxisRaw("Horizontal");//direction X axis
+        if (!lockInput)
+        {
+            float dirX = Input.GetAxisRaw("Horizontal");//direction X axis
 
-      rb.velocity = new Vector2(dirX*speed, rb.velocity.y);
-      animator.SetFloat("Speed", Mathf.Abs(dirX));
-      
-      if (dirX > 0){
-         transform.localScale = new Vector2(scale, transform.localScale.y);
-      }
-      else if (dirX < 0){
-         transform.localScale = new Vector2(-scale, transform.localScale.y);
-      }
+            rb.velocity = new Vector2(dirX * speed, rb.velocity.y);
+            animator.SetFloat("Speed", Mathf.Abs(dirX));
 
-      if (Input.GetButtonDown("Jump"))
-      {
-            rb.velocity = new Vector2(rb.velocity.x,jumpVelocity);
-      } 
+            if (dirX > 0)
+            {
+                transform.localScale = new Vector2(scale, transform.localScale.y);
+            }
+            else if (dirX < 0)
+            {
+                transform.localScale = new Vector2(-scale, transform.localScale.y);
+            }
 
-      
+            if (Input.GetButtonDown("Jump"))
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpVelocity);
+            }
+        }
+    }
+    public void LockInput(bool doLock)
+    {
+        Debug.Log("Do lock");
+        lockInput = doLock;
+        
     }
 }

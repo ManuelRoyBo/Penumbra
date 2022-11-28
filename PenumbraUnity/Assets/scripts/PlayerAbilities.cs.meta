@@ -15,7 +15,7 @@ MonoImporter:
   - waterCrystalThrowPrefab: {instanceID: 0}
   - earthCrystalThrowPrefab: {instanceID: 0}
   - darkCrystalThrowPrefab: {instanceID: 0}
-  - fireCrystalConsumePrefab: {instanceID: 0}
+  - fireCrystalConsumePrefab: {fileID: 9001965501715254371, guid: 5695ae3db5f44c44aab747e6aaab55b6, type: 3}
   - waterCrystalConsumePrefab: {instanceID: 0}
   - earthCrystalConsumePrefab: {instanceID: 0}
   - darkCrystalConsumePrefab: {instanceID: 0}

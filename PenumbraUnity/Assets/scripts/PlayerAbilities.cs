@@ -39,6 +39,7 @@ public class PlayerAbilities : MonoBehaviour
     void Update()
     {
         if (Input.GetButtonDown("Fire1")) { ThrowCrystal(); }
+        else if (Input.GetButtonDown("Fire2")) { ConsumeCrystal(); }
         if (holding)
         {
             holding.transform.position = holdPosition.position;
@@ -60,12 +61,7 @@ public class PlayerAbilities : MonoBehaviour
         {
             ThrowInstantiate(fireCrystalThrowPrefab);
         }
-        else
-        {
-            Debug.Log("ERROR: the crystal throw behaviour either wasn't programmed yet or the name of this crystal object is wrong." +
-                " (Note that the crystal gameObject must include it's prefab's name in it.  )" +
-                "In either cases, the crystal auto-destructs itself and doesn't instanciante it's thrown version.");
-        }
+        //add an if else for other crystals
 
         holding.GetComponent<Crystal>().DestroySelf(); //I wasn't able to destroy the crystal from this script. so Instead, the crystal destroy itself and I call its function.
         holding = null;
@@ -74,22 +70,22 @@ public class PlayerAbilities : MonoBehaviour
     void ThrowInstantiate(GameObject objectToInstantiate)
     {
         GameObject obj = (GameObject)Instantiate(objectToInstantiate, gameObject.transform.position, new Quaternion(0, 0, 0, 0));
-        obj.GetComponent<Rigidbody2D>().velocity = PointTowardsMouse() * CRYSTAL_THROW_FORCE;
+        obj.GetComponent<Rigidbody2D>().velocity = GameManager.Instance.PointTowardsMouse(gameObject) * CRYSTAL_THROW_FORCE;
     }
 
     /// <summary>
     /// Returns a vector from the player pointing towards the mouse.
     /// </summary>
     /// <returns></returns>
-    Vector3 PointTowardsMouse()
+    void ConsumeCrystal()
     {
-        Vector2 mousePosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
-        Vector2 playerPosition = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
+        if (!holding) { return; }
+        if (holding.name.Contains(fireCrystalPrefab.name))
+        { 
+            Instantiate(fireCrystalConsumePrefab);
+        }
 
-        Vector2 difference = mousePosition - playerPosition;
-        double angleInRadian = Math.Atan2(difference.y, difference.x);
-        Vector3 points = new Vector3((float)Math.Cos(angleInRadian), (float)Math.Sin(angleInRadian), 0);
-
-        return points;
+        holding.GetComponent<Crystal>().DestroySelf(); //I wasn't able to destroy the crystal from this script. so Instead, the crystal destroy itself and I call its function.
+        holding = null;
     }
 }
