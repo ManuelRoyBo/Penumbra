@@ -6,6 +6,7 @@ using System;
 public class PlayerAbilities : MonoBehaviour
 {
     public float CRYSTAL_THROW_FORCE = 10f;
+    public float HOLD_TO_CONSUME_TIME = 2.5f;
 
     public Transform holdPosition;
     public Crystal holding, consumed;
@@ -35,11 +36,18 @@ public class PlayerAbilities : MonoBehaviour
     public GameObject earthCrystalConsumePrefab;
     public GameObject darkCrystalConsumePrefab;
 
+    Coroutine holdButton;
     // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("Fire1")) { ThrowCrystal(); }
-        else if (Input.GetButtonDown("Fire2")) { ConsumeCrystal(); }
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+          holdButton = StartCoroutine(HoldToConsume());
+        }
+        else if (Input.GetButtonUp("Fire2")) StopCoroutine(holdButton);//No error? Variable "hold" might not be initialized
+
         if (holding)
         {
             holding.transform.position = holdPosition.position;
@@ -73,10 +81,11 @@ public class PlayerAbilities : MonoBehaviour
         obj.GetComponent<Rigidbody2D>().velocity = GameManager.Instance.PointTowardsMouse(gameObject) * CRYSTAL_THROW_FORCE;
     }
 
-    /// <summary>
-    /// Returns a vector from the player pointing towards the mouse.
-    /// </summary>
-    /// <returns></returns>
+    IEnumerator HoldToConsume()
+    {
+        yield return new WaitForSeconds(HOLD_TO_CONSUME_TIME);
+        ConsumeCrystal();
+    }
     void ConsumeCrystal()
     {
         if (!holding) { return; }
