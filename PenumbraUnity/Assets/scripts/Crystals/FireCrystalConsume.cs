@@ -35,7 +35,6 @@ public class FireCrystalConsume : MonoBehaviour
 
         if (isLaunched)
         {
-            Debug.Log(player.GetComponent<Rigidbody2D>().velocity);
             player.GetComponent<Rigidbody2D>().velocity = new Vector2(pointTowardMouse.x, pointTowardMouse.y) * LAUNCH_FORCE;
         }
     }

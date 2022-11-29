@@ -37,22 +37,38 @@ public class PlayerAbilities : MonoBehaviour
     public GameObject darkCrystalConsumePrefab;
 
     Coroutine holdButton;
+    bool isHoldingFire2 = false;
     // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("Fire1")) { ThrowCrystal(); }
 
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("Fire2") && holding && !isHoldingFire2 )
         {
-          holdButton = StartCoroutine(HoldToConsume());
+            isHoldingFire2 = true;
+            gameObject.GetComponent<PlayerMovement>().LockInput(true); //player can't move while holding
+            holdButton = StartCoroutine(HoldToConsume());
         }
-        else if (Input.GetButtonUp("Fire2")) StopCoroutine(holdButton);//No error? Variable "hold" might not be initialized
-
+        else if (Input.GetButtonUp("Fire2") && holding && isHoldingFire2)
+        {
+            isHoldingFire2 = false;
+            gameObject.GetComponent<PlayerMovement>().LockInput(false);
+            StopCoroutine(holdButton);//No error? Variable "hold" might not be initialized
+        }
         if (holding)
         {
-            holding.transform.position = holdPosition.position;
-            holding.transform.rotation = holdPosition.rotation;
-            holding.transform.localScale = holdPosition.localScale;
+            if (isHoldingFire2)
+            {
+                holding.transform.position = gameObject.transform.position;
+                holding.transform.rotation = new Quaternion(0,0,0,0);
+                holding.transform.localScale = new Vector3(1,1,1);
+            }
+            else
+            {
+                holding.transform.position = holdPosition.position;
+                holding.transform.rotation = holdPosition.rotation;
+                holding.transform.localScale = holdPosition.localScale;
+            }
         }
     }
     public void HoldCrystal(Crystal toHold)
@@ -85,6 +101,7 @@ public class PlayerAbilities : MonoBehaviour
     {
         yield return new WaitForSeconds(HOLD_TO_CONSUME_TIME);
         ConsumeCrystal();
+        gameObject.GetComponent<PlayerMovement>().LockInput(false);
     }
     void ConsumeCrystal()
     {

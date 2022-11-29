@@ -47,7 +47,6 @@ public class PlayerMovement : MonoBehaviour
     }
     public void LockInput(bool doLock)
     {
-        Debug.Log("Do lock");
         lockInput = doLock;
         
     }
