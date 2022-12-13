@@ -8,7 +8,7 @@ public class PlayerAbilities : MonoBehaviour
     public float CRYSTAL_THROW_FORCE = 10f;
     public float HOLD_TO_CONSUME_TIME = 2.5f;
 
-    public Transform holdPosition;
+    public Transform holdPosition, crystalConsummingHoldPosition;
     public Crystal holding, consumed;
 
     /*
@@ -59,9 +59,9 @@ public class PlayerAbilities : MonoBehaviour
         {
             if (isHoldingFire2)
             {
-                holding.transform.position = gameObject.transform.position;
-                holding.transform.rotation = new Quaternion(0,0,0,0);
-                holding.transform.localScale = new Vector3(1,1,1);
+                holding.transform.position = crystalConsummingHoldPosition.position;
+                holding.transform.rotation = crystalConsummingHoldPosition.rotation;
+                holding.transform.localScale = crystalConsummingHoldPosition.localScale;
             }
             else
             {

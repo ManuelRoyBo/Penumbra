@@ -23,26 +23,32 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!GameManager.Instance.CanMove()) { rb.velocity = new Vector2(0, rb.velocity.y); return; }
 
+        float dirX;
+
         if (!lockInput)
         {
-            float dirX = Input.GetAxisRaw("Horizontal");//direction X axis
+            dirX = Input.GetAxisRaw("Horizontal");//direction X axis
+        }
+        else
+        {
+            dirX = 0;
+        }
 
-            rb.velocity = new Vector2(dirX * speed, rb.velocity.y);
-            animator.SetFloat("Speed", Mathf.Abs(dirX));
+        rb.velocity = new Vector2(dirX * speed, rb.velocity.y);
+        animator.SetFloat("Speed", Mathf.Abs(dirX));
 
-            if (dirX > 0)
-            {
-                transform.localScale = new Vector2(scale, transform.localScale.y);
-            }
-            else if (dirX < 0)
-            {
-                transform.localScale = new Vector2(-scale, transform.localScale.y);
-            }
+        if (dirX > 0)
+        {
+            transform.localScale = new Vector2(scale, transform.localScale.y);
+        }
+        else if (dirX < 0)
+        {
+            transform.localScale = new Vector2(-scale, transform.localScale.y);
+        }
 
-            if (Input.GetButtonDown("Jump"))
-            {
-                rb.velocity = new Vector2(rb.velocity.x, jumpVelocity);
-            }
+        if (Input.GetButtonDown("Jump"))
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpVelocity);
         }
     }
     public void LockInput(bool doLock)
