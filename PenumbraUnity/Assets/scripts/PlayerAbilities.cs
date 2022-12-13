@@ -55,16 +55,23 @@ public class PlayerAbilities : MonoBehaviour
             gameObject.GetComponent<PlayerMovement>().LockInput(false);
             StopCoroutine(holdButton);//No error? Variable "hold" might not be initialized
         }
+        
         if (holding)
         {
+            Animator animator = holding.GetComponent<Animator>();
+
+            animator.SetBool("isHolding", true);
+
             if (isHoldingFire2)
             {
+                animator.SetBool("isConsuming", true);
                 holding.transform.position = crystalConsummingHoldPosition.position;
                 holding.transform.rotation = crystalConsummingHoldPosition.rotation;
                 holding.transform.localScale = crystalConsummingHoldPosition.localScale;
             }
             else
             {
+                animator.SetBool("isConsuming", false);
                 holding.transform.position = holdPosition.position;
                 holding.transform.rotation = holdPosition.rotation;
                 holding.transform.localScale = holdPosition.localScale;
