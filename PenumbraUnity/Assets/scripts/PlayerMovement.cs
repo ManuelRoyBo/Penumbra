@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private LayerMask platformLayerMask;
     public bool lockInput = false;
    public Animator animator;
    private float scale;
@@ -46,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = new Vector2(-scale, transform.localScale.y);
         }
 
-        if (Input.GetButtonDown("Jump"))
+        if (IsGrounded() && Input.GetButtonDown("Jump"))
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpVelocity);
         }
@@ -55,5 +56,23 @@ public class PlayerMovement : MonoBehaviour
     {
         lockInput = doLock;
         
+    }
+
+    private bool IsGrounded()
+    {
+        float extraHeightText = 0.1f;
+        BoxCollider2D collider = gameObject.GetComponent<BoxCollider2D>();
+        RaycastHit2D boxHit = Physics2D.BoxCast(collider.bounds.center, collider.bounds.size,0f, Vector2.down, extraHeightText,platformLayerMask);
+        Color rayColor;
+        if (boxHit.collider != null)
+        {
+            rayColor = Color.green;
+        }
+        else
+        {
+            rayColor = Color.red;
+        }
+        //Debug.DrawRay(collider.bounds.center, Vector2.down * (collider.bounds.extents.y + extraHeightText),rayColor);
+        return boxHit.collider != null;
     }
 }
