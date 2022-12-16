@@ -85,7 +85,7 @@ public class KoopaMovement : MonoBehaviour
 
         float extraLengthText = 0.01f;
         float rayCastLength = collider.size.x + extraLengthText;
-        RaycastHit2D raycastHit = Physics2D.Raycast(collider.bounds.center, rayDirection, rayCastLength, platformLayerMask);
+        RaycastHit2D raycastHit = Physics2D.BoxCast(collider.bounds.center,collider.size*0.8f,0f, rayDirection, rayCastLength, platformLayerMask);
         Color rayColor;
         if (!(raycastHit.collider != null))
         {

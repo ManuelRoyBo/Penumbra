@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Crystal
   - ThrownCrystal
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - 
   - Platforms
   - Enemy
-  - 
+  - Player
   - 
   - 
   - 
