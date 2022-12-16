@@ -37,33 +37,29 @@ public class PlayerAbilities : MonoBehaviour
     public GameObject darkCrystalConsumePrefab;
 
     Coroutine holdButton;
-    bool isHoldingFire2 = false;
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1")) { ThrowCrystal(); }
+        if (Input.GetButton("Fire1")) { ThrowCrystal(); }
 
-        if (Input.GetButtonDown("Fire2") && holding && !isHoldingFire2 )
-        {
-            isHoldingFire2 = true;
-            gameObject.GetComponent<PlayerMovement>().LockInput(true); //player can't move while holding
-            holdButton = StartCoroutine(HoldToConsume());
-        }
-        else if (Input.GetButtonUp("Fire2") && holding && isHoldingFire2)
-        {
-            isHoldingFire2 = false;
-            gameObject.GetComponent<PlayerMovement>().LockInput(false);
-            StopCoroutine(holdButton);//No error? Variable "hold" might not be initialized
-        }
-        
         if (holding)
         {
             Animator animator = holding.GetComponent<Animator>();
 
             animator.SetBool("isHolding", true);
 
-            if (isHoldingFire2)
+            if (Input.GetButtonDown("Fire2"))
             {
+                holdButton = StartCoroutine(HoldToConsume());
+            }
+            else if (Input.GetButtonUp("Fire2"))
+            {
+                StopCoroutine(holdButton);//No error? Variable "hold" might not be initialized
+            }
+
+            if (Input.GetButton("Fire2"))
+            {
+                gameObject.GetComponent<PlayerMovement>().LockInput(true); //player can't move while holding
                 animator.SetBool("isConsuming", true);
                 holding.transform.position = crystalConsummingHoldPosition.position;
                 holding.transform.rotation = crystalConsummingHoldPosition.rotation;
@@ -71,6 +67,7 @@ public class PlayerAbilities : MonoBehaviour
             }
             else
             {
+                gameObject.GetComponent<PlayerMovement>().LockInput(false);
                 animator.SetBool("isConsuming", false);
                 holding.transform.position = holdPosition.position;
                 holding.transform.rotation = holdPosition.rotation;
@@ -106,10 +103,19 @@ public class PlayerAbilities : MonoBehaviour
 
     IEnumerator HoldToConsume()
     {
-        yield return new WaitForSeconds(HOLD_TO_CONSUME_TIME);
+        Animator animator = holding.GetComponent<Animator>();
+        float timeElapsed = 0f;
+        while (timeElapsed < HOLD_TO_CONSUME_TIME) //This while loop make sure the consume animation takes the exact same time as HOLD_TO_CONSUME_TIME
+        {
+            animator.SetFloat("motionTime", Mathf.Lerp(0f, 1f, timeElapsed/HOLD_TO_CONSUME_TIME));
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+        animator.SetFloat("motionTime", 1f);
         ConsumeCrystal();
         gameObject.GetComponent<PlayerMovement>().LockInput(false);
     }
+
     void ConsumeCrystal()
     {
         if (!holding) { return; }
