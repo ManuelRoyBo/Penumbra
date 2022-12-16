@@ -1,15 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
-using System;
+using UnityEngine.Experimental.Rendering.Universal;
+using UnityEngine.Rendering.Universal;
 
 public class PlayerAbilities : MonoBehaviour
 {
+    [Header("Variables")]
     public float CRYSTAL_THROW_FORCE = 10f;
     public float HOLD_TO_CONSUME_TIME = 2.5f;
+    public float COLOR_AURA_FADE_TIME = 1.0f;
 
-    public Transform holdPosition, crystalConsummingHoldPosition;
-    public Crystal holding, consumed;
+    [Header("Hold positions slots")]
+    public Transform holdPosition;
+    public Transform crystalConsummingHoldPosition;
+
+
+    [Header("For Debugging")]
+    public Crystal holding;
+    public Crystal consumed;
 
     /*
      * Dear Experienced programmers reading this. 
@@ -19,24 +29,42 @@ public class PlayerAbilities : MonoBehaviour
      */
 
     //Default crystals
+    [Header("Normal Prefabs")]
     public GameObject fireCrystalPrefab;
     public GameObject waterCrystalPrefab;
     public GameObject earthCrystalPrefab;
     public GameObject darkCrystalPrefab;
-    
+
     //Throw prefab
+    [Header("Throw Prefabs")]
     public GameObject fireCrystalThrowPrefab;
     public GameObject waterCrystalThrowPrefab;
     public GameObject earthCrystalThrowPrefab;
     public GameObject darkCrystalThrowPrefab;
 
     //Consume Prefab (mostly accessing the script)
+    [Header("Consume Prefabs")]
     public GameObject fireCrystalConsumePrefab;
     public GameObject waterCrystalConsumePrefab;
     public GameObject earthCrystalConsumePrefab;
     public GameObject darkCrystalConsumePrefab;
 
+    [Header("Consume aura light color")]
+    public Light2D playerLight;
+    public Color fireCrystalAuraColor;
+    public Color waterCrystalAuraColor;
+    public Color earthCrystalAuraColor;
+    public Color darkCrystalAuraColor;
+
+
     Coroutine holdButton;
+    Color defaultColor;
+
+    private void Start()
+    {
+        defaultColor = playerLight.color;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -122,9 +150,47 @@ public class PlayerAbilities : MonoBehaviour
         if (holding.name.Contains(fireCrystalPrefab.name))
         { 
             Instantiate(fireCrystalConsumePrefab);
+
+            float duration = fireCrystalConsumePrefab.GetComponent<FireCrystalConsume>().DURATION_OF_CRYSTAL;
+            StartCoroutine(changeAuraColor(fireCrystalAuraColor, duration));
+        }
+        else if (holding.name.Contains(waterCrystalPrefab.name))
+        {
+            StartCoroutine(changeAuraColor(waterCrystalAuraColor, 10f));//temporary 10 sec hard coded
+            //Instantiate(waterCrystalConsumePrefab);
+        }
+        else if (holding.name.Contains(earthCrystalPrefab.name))
+        {
+            StartCoroutine(changeAuraColor(earthCrystalAuraColor, 10f));//temporary 10 sec hard coded
+            //Instantiate(earthCrystalConsumePrefab);
+        }
+        else if (holding.name.Contains(darkCrystalPrefab.name))
+        {
+            StartCoroutine(changeAuraColor(darkCrystalAuraColor, 10f));//temporary 10 sec hard coded
+            //Instantiate(darkCrystalConsumePrefab);
         }
 
         holding.GetComponent<Crystal>().DestroySelf(); //I wasn't able to destroy the crystal from this script. so Instead, the crystal destroy itself and I call its function.
         holding = null;
+    }
+
+    IEnumerator changeAuraColor(Color color, float time)
+    {
+       
+        float timeElapsed = 0;
+        while (timeElapsed < COLOR_AURA_FADE_TIME) //This while loop make sure the consume animation takes the exact same time as HOLD_TO_CONSUME_TIME
+        {
+            playerLight.color = Color.Lerp(defaultColor, color, timeElapsed / COLOR_AURA_FADE_TIME);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+        yield return new WaitForSeconds(time - (COLOR_AURA_FADE_TIME*2));
+        timeElapsed = 0;
+        while (timeElapsed < COLOR_AURA_FADE_TIME) //This while loop make sure the consume animation takes the exact same time as HOLD_TO_CONSUME_TIME
+        {
+            playerLight.color = Color.Lerp(color, defaultColor, timeElapsed / COLOR_AURA_FADE_TIME);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
     }
 }

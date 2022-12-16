@@ -10,7 +10,7 @@ public class KoopaMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     
     [Header("Collider for ground")]
-    public BoxCollider2D collider;
+    public new BoxCollider2D collider;
     // Start is called before the first frame update
 
     bool isFacingRight = true;
