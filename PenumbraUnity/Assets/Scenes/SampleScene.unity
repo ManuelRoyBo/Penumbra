@@ -2870,6 +2870,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1915150305143045380, guid: 53a4e026cee00164faccd505d84e6a15, type: 3}
+      propertyPath: COLOR_AURA_FADE_TIME
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1915150305143045380, guid: 53a4e026cee00164faccd505d84e6a15, type: 3}
       propertyPath: darkCrystalAuraColor.a
       value: 1
       objectReference: {fileID: 0}
