@@ -3,12 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireCrystalConsume : MonoBehaviour
+public class FireCrystalConsume : MonoBehaviour, ICrystalConsume
 {
-
-    public float DURATION_OF_CRYSTAL = 10;
+    [field: SerializeField]
+    public float DURATION_OF_CRYSTAL { get; private set; } //10
+    [field: SerializeField]
     public float TIME_OF_FLIGHT = 3;
+    [field: SerializeField]
     public float LAUNCH_FORCE = 5;
+
+    [field: SerializeField]
+    public Color PLAYER_COLOR_AURA { get; private set;  }
 
     bool isLaunched = false;
 

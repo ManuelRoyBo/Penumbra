@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
@@ -27,27 +28,6 @@ public class PlayerAbilities : MonoBehaviour
      * Your eyes may bleed. I am sorry.
      * - kingpin
      */
-
-    //Default crystals
-    [Header("Normal Prefabs")]
-    public GameObject fireCrystalPrefab;
-    public GameObject waterCrystalPrefab;
-    public GameObject earthCrystalPrefab;
-    public GameObject darkCrystalPrefab;
-
-    //Throw prefab
-    [Header("Throw Prefabs")]
-    public GameObject fireCrystalThrowPrefab;
-    public GameObject waterCrystalThrowPrefab;
-    public GameObject earthCrystalThrowPrefab;
-    public GameObject darkCrystalThrowPrefab;
-
-    //Consume Prefab (mostly accessing the script)
-    [Header("Consume Prefabs")]
-    public GameObject fireCrystalConsumePrefab;
-    public GameObject waterCrystalConsumePrefab;
-    public GameObject earthCrystalConsumePrefab;
-    public GameObject darkCrystalConsumePrefab;
 
     [Header("Consume aura light color")]
     public Light2D playerLight;
@@ -113,20 +93,11 @@ public class PlayerAbilities : MonoBehaviour
     {
         if (!holding) { return; }
 
-        if (holding.name.Contains(fireCrystalPrefab.name))
-        {
-            ThrowInstantiate(fireCrystalThrowPrefab);
-        }
-        //add an if else for other crystals
+        GameObject obj = (GameObject)Instantiate(holding.throwCrystal, gameObject.transform.position, new Quaternion(0, 0, 0, 0));
+        obj.GetComponent<Rigidbody2D>().velocity = GameManager.Instance.PointTowardsMouse(gameObject) * CRYSTAL_THROW_FORCE;
 
         holding.GetComponent<Crystal>().DestroySelf(); //I wasn't able to destroy the crystal from this script. so Instead, the crystal destroy itself and I call its function.
         holding = null;
-    }
-
-    void ThrowInstantiate(GameObject objectToInstantiate)
-    {
-        GameObject obj = (GameObject)Instantiate(objectToInstantiate, gameObject.transform.position, new Quaternion(0, 0, 0, 0));
-        obj.GetComponent<Rigidbody2D>().velocity = GameManager.Instance.PointTowardsMouse(gameObject) * CRYSTAL_THROW_FORCE;
     }
 
     IEnumerator HoldToConsume()
@@ -147,28 +118,14 @@ public class PlayerAbilities : MonoBehaviour
     void ConsumeCrystal()
     {
         if (!holding) { return; }
-        if (holding.name.Contains(fireCrystalPrefab.name))
-        { 
-            Instantiate(fireCrystalConsumePrefab);
 
-            float duration = fireCrystalConsumePrefab.GetComponent<FireCrystalConsume>().DURATION_OF_CRYSTAL;
-            StartCoroutine(changeAuraColor(fireCrystalAuraColor, duration));
-        }
-        else if (holding.name.Contains(waterCrystalPrefab.name))
-        {
-            StartCoroutine(changeAuraColor(waterCrystalAuraColor, 10f));//temporary 10 sec hard coded
-            //Instantiate(waterCrystalConsumePrefab);
-        }
-        else if (holding.name.Contains(earthCrystalPrefab.name))
-        {
-            StartCoroutine(changeAuraColor(earthCrystalAuraColor, 10f));//temporary 10 sec hard coded
-            //Instantiate(earthCrystalConsumePrefab);
-        }
-        else if (holding.name.Contains(darkCrystalPrefab.name))
-        {
-            StartCoroutine(changeAuraColor(darkCrystalAuraColor, 10f));//temporary 10 sec hard coded
-            //Instantiate(darkCrystalConsumePrefab);
-        }
+        GameObject consumeCrystal = holding.consumeCrystal;
+        ICrystalConsume consumeCrystalScript = consumeCrystal.GetComponent<ICrystalConsume>();
+
+        Instantiate(consumeCrystal);
+
+        float duration = consumeCrystalScript.DURATION_OF_CRYSTAL;
+        StartCoroutine(changeAuraColor(consumeCrystalScript.PLAYER_COLOR_AURA, duration));
 
         holding.GetComponent<Crystal>().DestroySelf(); //I wasn't able to destroy the crystal from this script. so Instead, the crystal destroy itself and I call its function.
         holding = null;

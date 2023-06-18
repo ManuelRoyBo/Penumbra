@@ -171,9 +171,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3c4f1112f5e33848bdcc1b4273ada40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  throwCrystal: {fileID: 2036865562345696651, guid: e6de32f18aa2c0e45b4bbfb74a04faa2, type: 3}
+  consumeCrystal: {fileID: 9001965501715254371, guid: 5695ae3db5f44c44aab747e6aaab55b6, type: 3}
+  consumePlayerAura: {r: 1, g: 0.57254905, b: 0.57254905, a: 0}
 --- !u!95 &7274423895508233051
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -190,4 +193,4 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
