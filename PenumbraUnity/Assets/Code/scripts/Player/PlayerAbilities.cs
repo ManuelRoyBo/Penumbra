@@ -28,13 +28,7 @@ public class PlayerAbilities : MonoBehaviour
      * Your eyes may bleed. I am sorry.
      * - kingpin
      */
-
-    [Header("Consume aura light color")]
     public Light2D playerLight;
-    public Color fireCrystalAuraColor;
-    public Color waterCrystalAuraColor;
-    public Color earthCrystalAuraColor;
-    public Color darkCrystalAuraColor;
 
 
     Coroutine holdButton;
