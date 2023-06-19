@@ -11,9 +11,7 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
 
     //Reference variables
-    public Transform Player;
-    public GameObject PlayerObj;
-    [HideInInspector] public PlayerMovement PMovement;
+    public GameObject Player;
     [HideInInspector] public PlayerAbilities PAbility;
 
     //UI variables
@@ -34,7 +32,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        PMovement = Player.GetComponent<PlayerMovement>();
         PAbility = Player.GetComponent<PlayerAbilities>();
     }
 

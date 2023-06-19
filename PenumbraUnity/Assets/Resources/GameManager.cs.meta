@@ -3,7 +3,12 @@ guid: 1aa04dbb9c63f2e4ab60f1b1e154fe58
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Player: {fileID: 1915150305143045389, guid: 53a4e026cee00164faccd505d84e6a15, type: 3}
+  - PAbility: {instanceID: 0}
+  - InteractText: {instanceID: 0}
+  - DialogueObject: {instanceID: 0}
+  - dialogueTextArea: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

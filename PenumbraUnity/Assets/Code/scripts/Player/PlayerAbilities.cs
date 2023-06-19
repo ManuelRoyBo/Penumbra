@@ -1,9 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine.Rendering.Universal;
 
 public class PlayerAbilities : MonoBehaviour
@@ -15,7 +11,7 @@ public class PlayerAbilities : MonoBehaviour
 
     [Header("Hold positions slots")]
     public Transform holdPosition;
-    public Transform crystalConsummingHoldPosition;
+    public Transform crystalConsumingHoldPosition;
 
 
     [Header("For Debugging")]
@@ -39,59 +35,70 @@ public class PlayerAbilities : MonoBehaviour
         defaultColor = playerLight.color;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void HoldCrystal(Crystal toHold)
     {
-        if (Input.GetButton("Fire1")) { ThrowCrystal(); }
+        if (holding != null)
+        {
+            return;
+        }
 
-        if (holding)
+        holding = toHold;
+        holding.GetComponent<Collider2D>().enabled = false;
+    }
+
+
+    private void Update()
+    {
+        if (holding != null)
         {
             Animator animator = holding.GetComponent<Animator>();
-
             animator.SetBool("isHolding", true);
 
-            if (Input.GetButtonDown("Fire2"))
+            holding.transform.position = holdPosition.position;
+            holding.transform.rotation = holdPosition.rotation;
+            holding.transform.localScale = holdPosition.localScale;
+
+            if (Input.GetButtonDown("Fire1"))
             {
-                holdButton = StartCoroutine(HoldToConsume());
+                ThrowCrystal();
+            }
+
+            
+            
+            if (Input.GetButton("Fire2"))
+            {
+                if (Input.GetButtonDown("Fire2"))
+                {
+                    holdButton = StartCoroutine(HoldToConsume());
+                    animator.SetBool("isConsuming", true);
+                }
+                
+                holding.transform.position = crystalConsumingHoldPosition.position;
+                holding.transform.rotation = crystalConsumingHoldPosition.rotation;
+                holding.transform.localScale = crystalConsumingHoldPosition.localScale;
             }
             else if (Input.GetButtonUp("Fire2"))
             {
-                StopCoroutine(holdButton);//No error? Variable "hold" might not be initialized
+                StopCoroutine(holdButton);
+                animator.SetBool("isConsuming", false);
             }
 
-            if (Input.GetButton("Fire2"))
-            {
-                gameObject.GetComponent<PlayerMovement>().LockInput(true); //player can't move while holding
-                animator.SetBool("isConsuming", true);
-                holding.transform.position = crystalConsummingHoldPosition.position;
-                holding.transform.rotation = crystalConsummingHoldPosition.rotation;
-                holding.transform.localScale = crystalConsummingHoldPosition.localScale;
-            }
-            else
-            {
-                gameObject.GetComponent<PlayerMovement>().LockInput(false);
-                animator.SetBool("isConsuming", false);
-                holding.transform.position = holdPosition.position;
-                holding.transform.rotation = holdPosition.rotation;
-                holding.transform.localScale = holdPosition.localScale;
-            }
+
+
         }
-    }
-    public void HoldCrystal(Crystal toHold)
-    {
-        if (holding) { return; }
-        toHold.GetComponent<Collider2D>().enabled = false;
-        holding = toHold;
+
+
     }
     void ThrowCrystal()
     {
-        if (!holding) { return; }
+        if (holding)
+        {
+            GameObject obj = (GameObject)Instantiate(holding.throwCrystal, gameObject.transform.position, new Quaternion(0, 0, 0, 0));
+            obj.GetComponent<Rigidbody2D>().velocity = GameManager.Instance.PointTowardsMouse(gameObject) * CRYSTAL_THROW_FORCE;
 
-        GameObject obj = (GameObject)Instantiate(holding.throwCrystal, gameObject.transform.position, new Quaternion(0, 0, 0, 0));
-        obj.GetComponent<Rigidbody2D>().velocity = GameManager.Instance.PointTowardsMouse(gameObject) * CRYSTAL_THROW_FORCE;
-
-        holding.GetComponent<Crystal>().DestroySelf(); //I wasn't able to destroy the crystal from this script. so Instead, the crystal destroy itself and I call its function.
-        holding = null;
+            holding.GetComponent<Crystal>().DestroySelf(); //I wasn't able to destroy the crystal from this script. so Instead, the crystal destroy itself and I call its function.
+            holding = null;
+        }
     }
 
     IEnumerator HoldToConsume()
@@ -106,7 +113,7 @@ public class PlayerAbilities : MonoBehaviour
         }
         animator.SetFloat("motionTime", 1f);
         ConsumeCrystal();
-        gameObject.GetComponent<PlayerMovement>().LockInput(false);
+        //gameObject.GetComponent<PlayerMovement>().LockInput(false);
     }
 
     void ConsumeCrystal()
@@ -123,6 +130,7 @@ public class PlayerAbilities : MonoBehaviour
 
         holding.GetComponent<Crystal>().DestroySelf(); //I wasn't able to destroy the crystal from this script. so Instead, the crystal destroy itself and I call its function.
         holding = null;
+        Debug.Log("consumed");
     }
 
     IEnumerator changeAuraColor(Color color, float time)

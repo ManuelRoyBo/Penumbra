@@ -24,7 +24,7 @@ public class FireCrystalConsume : MonoBehaviour, ICrystalConsume
     // Start is called before the first frame update
     void Start()
     {
-        player = GameManager.Instance.PlayerObj;
+        player = GameManager.Instance.Player;
         Destroy(gameObject, DURATION_OF_CRYSTAL);
     }
 
@@ -48,14 +48,14 @@ public class FireCrystalConsume : MonoBehaviour, ICrystalConsume
         pointTowardMouse = GameManager.Instance.PointTowardsMouse(player);
         yield return new WaitForSeconds(0);
         isLaunched = true;
-        player.GetComponent<PlayerMovement>().LockInput(true);
+        //player.GetComponent<PlayerMovement>().LockInput(true);
     }
     
     IEnumerator stopLaunch(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
         isLaunched = false;
-        player.GetComponent<PlayerMovement>().LockInput(false);
+        //player.GetComponent<PlayerMovement>().LockInput(false);
         player.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
     }
 }

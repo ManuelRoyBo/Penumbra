@@ -41,12 +41,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1915150305143045386}
   - component: {fileID: 1915150305143045385}
-  - component: {fileID: 1915150305143045384}
-  - component: {fileID: 1915150305143045391}
-  - component: {fileID: 1915150305143045390}
-  - component: {fileID: 1915150305143045380}
+  - component: {fileID: -4984282205636251033}
+  - component: {fileID: 5140773914911476432}
   - component: {fileID: 1915150305143045387}
   - component: {fileID: 3754439303201599406}
+  - component: {fileID: 6279501983477707409}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -123,71 +122,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &1915150305143045384
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1915150305143045389}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
---- !u!61 &1915150305143045391
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1915150305143045389}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.029881477, y: 0.008844972}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.71875, y: 1.09375}
-    newSize: {x: 1.15, y: 1.75}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.6207142, y: 0.7598908}
-  m_EdgeRadius: 0
---- !u!114 &1915150305143045390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1915150305143045389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 375f2961c06f7734eb173465463a585c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  platformLayerMask:
-    serializedVersion: 2
-    m_Bits: 256
-  lockInput: 0
-  animator: {fileID: 1915150305143045387}
---- !u!114 &1915150305143045380
+--- !u!114 &-4984282205636251033
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -203,29 +138,48 @@ MonoBehaviour:
   HOLD_TO_CONSUME_TIME: 2.5
   COLOR_AURA_FADE_TIME: 0.5
   holdPosition: {fileID: 1915150305034357613}
-  crystalConsummingHoldPosition: {fileID: 4471471714586812537}
+  crystalConsumingHoldPosition: {fileID: 4471471714586812537}
   holding: {fileID: 0}
   consumed: {fileID: 0}
-  fireCrystalPrefab: {fileID: 2036865562345696651, guid: 74638dd0f2d51ae429d1b730573ada45, type: 3}
-  waterCrystalPrefab: {fileID: 2036865562345696651, guid: 7bdec93d7e582a640bbf18569863bc3d, type: 3}
-  earthCrystalPrefab: {fileID: 2036865562345696651, guid: d0849b4c393c71b4ea3e78fbd880f2ea, type: 3}
-  darkCrystalPrefab: {fileID: 2036865562345696651, guid: a677cdf7499939748a45bd9250418f52, type: 3}
-  fireCrystalThrowPrefab: {fileID: 2036865562345696651, guid: e6de32f18aa2c0e45b4bbfb74a04faa2, type: 3}
-  waterCrystalThrowPrefab: {fileID: 0}
-  earthCrystalThrowPrefab: {fileID: 0}
-  darkCrystalThrowPrefab: {fileID: 0}
-  fireCrystalConsumePrefab: {fileID: 9001965501715254371, guid: 5695ae3db5f44c44aab747e6aaab55b6, type: 3}
-  waterCrystalConsumePrefab: {fileID: 0}
-  earthCrystalConsumePrefab: {fileID: 0}
-  darkCrystalConsumePrefab: {fileID: 0}
   playerLight: {fileID: 3754439303201599406}
-  fireCrystalAuraColor: {r: 1, g: 0.57254905, b: 0.57254905, a: 1}
-  waterCrystalAuraColor: {r: 0.23921569, g: 0.63529414, b: 1, a: 1}
-  earthCrystalAuraColor: {r: 0.7647059, g: 0.49411765, b: 0.16862746, a: 1}
-  darkCrystalAuraColor: {r: 0.4509804, g: 0.31764707, b: 0.41960785, a: 1}
+--- !u!114 &5140773914911476432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915150305143045389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 191d10c6a391bf241815f6e3874c11ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1915150305143045387}
+  _characterBounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0.33, y: 0.4, z: 0}
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  _detectorCount: 3
+  _detectionRayLength: 0.1
+  _rayBuffer: 0.1
+  _acceleration: 90
+  _moveClamp: 6
+  _deAcceleration: 90
+  _apexBonus: 0.1
+  _fallClamp: -40
+  _minFallSpeed: 10.9
+  _maxFallSpeed: 25.9
+  _jumpHeight: 11
+  _jumpApexThreshold: 10
+  _coyoteTimeThreshold: 0.1
+  _jumpBuffer: 0.1
+  _jumpEndEarlyGravityModifier: 1.5
+  _freeColliderIterations: 10
 --- !u!95 &1915150305143045387
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -242,7 +196,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &3754439303201599406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,35 +231,6 @@ MonoBehaviour:
   m_ShadowIntensity: 0.75
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
-  m_Vertices:
-  - position: {x: 0.9985302, y: 0.9985302, z: 0}
-    color: {r: 0.70710677, g: 0.70710677, b: 0, a: 0}
-    uv: {x: 0, y: 0}
-  - position: {x: 0.9985302, y: 0.9985302, z: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 0, y: 0}
-  - position: {x: -0.9985302, y: 0.9985302, z: 0}
-    color: {r: -0.70710677, g: 0.70710677, b: 0, a: 0}
-    uv: {x: 0, y: 0}
-  - position: {x: -0.9985302, y: 0.9985302, z: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 0, y: 0}
-  - position: {x: -0.99853003, y: -0.9985304, z: 0}
-    color: {r: -0.70710665, g: -0.7071069, b: 0, a: 0}
-    uv: {x: 0, y: 0}
-  - position: {x: -0.99853003, y: -0.9985304, z: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 0, y: 0}
-  - position: {x: 0.99853003, y: -0.9985304, z: 0}
-    color: {r: 0.70710665, g: -0.7071069, b: 0, a: 0}
-    uv: {x: 0, y: 0}
-  - position: {x: 0.99853003, y: -0.9985304, z: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 0, y: 0}
-  - position: {x: 0, y: 0, z: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 0, y: 0}
-  m_Triangles: 030001000800020000000100030002000100050003000800040002000300050004000300070005000800060004000500070006000500010007000800000006000700010000000700
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
@@ -322,6 +248,51 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!61 &6279501983477707409
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915150305143045389}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.71875, y: 1.09375}
+    newSize: {x: 1.15, y: 1.75}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1}
+  m_EdgeRadius: 0
 --- !u!1 &3113844959924445956
 GameObject:
   m_ObjectHideFlags: 0
