@@ -1,61 +1,100 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FireCrystalConsume : MonoBehaviour, ICrystalConsume
 {
-    [field: SerializeField]
-    public float DURATION_OF_CRYSTAL { get; private set; } //10
-    [field: SerializeField]
-    public float TIME_OF_FLIGHT = 3;
-    [field: SerializeField]
-    public float LAUNCH_FORCE = 5;
+    [SerializeField] public float DURATION_OF_CRYSTAL { get; private set; }
+    [SerializeField] public Color PLAYER_COLOR_AURA { get; private set; }
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float abilityDuration = 4f;
+    [SerializeField] private float arrivalThreshold = 0.3f;
+    [SerializeField] private LayerMask platformLayer;
 
-    [field: SerializeField]
-    public Color PLAYER_COLOR_AURA { get; private set;  }
+    private GameObject player;
+    private PlayerController playerController;
+    private bool isAbilityActive = false;
+    private Vector3 abilityTarget;
+    private float abilityTimer;
+    private BoxCollider2D playerCollider;
 
-    bool isLaunched = false;
-
-    Vector3 pointTowardMouse;
-
-    GameObject player;
-
-    // Start is called before the first frame update
     void Start()
     {
         player = GameManager.Instance.Player;
-        Destroy(gameObject, DURATION_OF_CRYSTAL);
+        playerController = player.GetComponent<PlayerController>();
+        playerCollider = player.GetComponent<BoxCollider2D>();
+        // Destroy(gameObject, DURATION_OF_CRYSTAL);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire2") && !isLaunched)
+        if (Input.GetButtonDown("Fire2") && !isAbilityActive)
         {
-            Debug.Log("launch");
-            StartCoroutine(startLaunch());
-            StartCoroutine(stopLaunch(TIME_OF_FLIGHT));
+            // Activate the ability
+            isAbilityActive = true;
+            abilityTarget = GetMouseWorldPosition();
+            abilityTimer = 0f;
+
+            // Disable the PlayerController script
+            playerController.enabled = false;
         }
 
-        if (isLaunched)
+        if (isAbilityActive)
         {
-            player.GetComponent<Rigidbody2D>().velocity = new Vector2(pointTowardMouse.x, pointTowardMouse.y) * LAUNCH_FORCE;
+            // Update the ability timer
+            abilityTimer += Time.deltaTime;
+
+            // Calculate the direction from the player to the ability target
+            Vector3 direction = abilityTarget - player.transform.position;
+            direction.Normalize(); 
+
+            // Perform boxcast and check for collisions with platforms
+            if (BoxCastCollisionCheck(player.transform.position, direction))
+            {
+                // Ability is blocked by a platform, stop the ability
+                isAbilityActive = false;
+
+                // Enable the PlayerController script
+                playerController.enabled = true;
+
+                return; // Exit the Update function early
+            }
+
+            // Move the player towards the ability target
+            player.transform.Translate(direction * moveSpeed * Time.deltaTime);
+
+            // Check if the player has arrived at the destination
+            if (abilityTimer >= abilityDuration || Vector3.Distance(player.transform.position, abilityTarget) <= arrivalThreshold)
+            {
+                // Deactivate the ability
+                isAbilityActive = false;
+
+                // Enable the PlayerController script
+                playerController.enabled = true;
+            }
         }
     }
-    IEnumerator startLaunch()
+
+    private float GetComponentValue(float value)
     {
-        pointTowardMouse = GameManager.Instance.PointTowardsMouse(player);
-        yield return new WaitForSeconds(0);
-        isLaunched = true;
-        //player.GetComponent<PlayerMovement>().LockInput(true);
+        if (value > 0f)
+            return 1f;
+        else if (value < 0f)
+            return -1f;
+        else
+            return 0f;
     }
-    
-    IEnumerator stopLaunch(float waitTime)
+
+    private bool BoxCastCollisionCheck(Vector3 origin, Vector3 direction)
     {
-        yield return new WaitForSeconds(waitTime);
-        isLaunched = false;
-        //player.GetComponent<PlayerMovement>().LockInput(false);
-        player.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+        Vector3 newDirection = new Vector3(GetComponentValue(direction.x), GetComponentValue(direction.y), GetComponentValue(direction.z));
+        float raycastLength = 0.1f;//playerCollider.size.magnitude + 0.2f; // Add a small offset for accuracy
+        RaycastHit2D hit = Physics2D.BoxCast(origin, playerCollider.size, 0f, newDirection, raycastLength, platformLayer);
+        return hit.collider != null;
+    }
+
+    private Vector3 GetMouseWorldPosition()
+    {
+        Vector3 mousePosition = Input.mousePosition;
+        mousePosition.z = -Camera.main.transform.position.z;
+        return Camera.main.ScreenToWorldPoint(mousePosition);
     }
 }
